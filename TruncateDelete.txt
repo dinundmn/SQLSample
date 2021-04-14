@@ -1,0 +1,58 @@
+USE [Student]
+GO
+
+/****** Object:  Table [dbo].[Students]    Script Date: 4/14/2021 3:03:54 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Students](
+	[Id] [smallint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[Class] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Students] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+------------------------------------------------
+
+USE [Student]
+GO
+/****** Object:  StoredProcedure [dbo].[InsertDummyData]    Script Date: 4/14/2021 2:59:26 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+Create PROCEDURE [dbo].[InsertDummyData]
+AS
+BEGIN
+insert into [dbo].[Students](Name, Class) values('Dinesh', '9')
+insert into [dbo].[Students](Name, Class) values('Rajesh', '11')
+insert into [dbo].[Students](Name, Class) values('Manish', '5')
+END
+---------------------------------------------------------------------
+exec [dbo].[InsertDummyData]
+select * from [dbo].[Students]
+
+truncate table Student.dbo.Students
+select * from [dbo].[Students]
+
+exec [dbo].[InsertDummyData]
+select * from [dbo].[Students]
+
+-------------------------------------------
+exec [dbo].[InsertDummyData]
+select * from [dbo].[Students]
+
+delete from Student.dbo.Students
+select * from [dbo].[Students]
+
+exec [dbo].[InsertDummyData]
+select * from [dbo].[Students]
+
+------------------------------------------
